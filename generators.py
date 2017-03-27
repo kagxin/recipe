@@ -10,10 +10,9 @@ gene = reverse(range(10))
 for data in gene:         #
     print(data)
 #gene.__next__()
-
+x   
 for i in (x*x for x in range(10)):   #生成器表达式
     print(i)
-
 
 
 print('----------------------------------------')
