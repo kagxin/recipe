@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import time
+import socket
 
 def reverse(data):                      #生成器函数
     for index in range(len(data)-1, -1, -1):
@@ -10,7 +11,7 @@ gene = reverse(range(10))
 for data in gene:         #
     print(data)
 #gene.__next__()
-x   
+
 for i in (x*x for x in range(10)):   #生成器表达式
     print(i)
 
