@@ -3,7 +3,7 @@
 import logging
 import time
 import functools
-
+####！！！！！！！！！！！！！！！！！！！！！有问题这个要重新修改。
 logging.basicConfig(level=logging.DEBUG)
 
 """用类去写装饰器更加的灵活
