@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import collections
+import socket
 
 
 Card = collections.namedtuple('card', ['rand', 'suit'])
@@ -29,10 +30,9 @@ print(len(fd))
 
 print(fd[1])
 
-for card in fd:
-    print(card)
-
-print()
 
 c = Card(rand='1', suit='hearts')
 print(c)
+print('hello')
+
+print('test magit')

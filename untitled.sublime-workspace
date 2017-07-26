@@ -8,9 +8,29 @@
 	"buffers":
 	[
 	],
-	"build_system": "",
+	"build_system": "Anaconda Python Builder",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Anaconda Python Builder",
+				""
+			]
+		],
 		[
 			[
 				[
@@ -64,6 +84,11 @@
 	],
 	"file_history":
 	[
+		"/Users/kangxin/Program/py3env/program/my_pynote/card.py",
+		"/Users/kangxin/Program/py3env/program/my_pynote/vertor.py",
+		"/Users/kangxin/Program/py3env/program/my_pynote/generators.py",
+		"/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socket.py",
+		"/Users/kangxin/Program/py3env/program/my_pynote/untitled.sublime-project",
 		"/Users/kangxin/Program/py3env/program/python-design-patterns/factory/abstract_factory.py",
 		"/Users/kangxin/Program/py3env/lib/python3.5/site-packages/django/utils/encoding.py",
 		"/Users/kangxin/Program/py3env/program/django_study/django_study.sublime-project",
@@ -81,7 +106,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -157,7 +182,7 @@
 	},
 	"output.exec":
 	{
-		"height": 100.0
+		"height": 207.0
 	},
 	"output.find_results":
 	{

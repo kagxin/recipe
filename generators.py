@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import time
-import socket
 
-def reverse(data):                      #生成器函数
+
+def reverse(data):  #生成器函数
     for index in range(len(data)-1, -1, -1):
         yield data[index]
 
