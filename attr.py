@@ -50,3 +50,26 @@ tom.show_attr_dict()
 
 tom.name = 'tom3'
 print(tom.name)
+
+
+def pro(name):
+
+    def get_name(instance):
+        return instance.__dict__[name]
+
+    def set_name(instance, value):
+        instance.__dict__[name] = value
+
+    return property(get_name, set_name)
+
+
+class Test:
+    def __init__(self, arg):
+        self.arg = arg
+
+    name = pro('name')
+
+
+t = Test('hello')
+t.name = 'kx'
+print(t.name)

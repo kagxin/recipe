@@ -16,6 +16,10 @@ class FrenchDeck:
         self._cards = [Card(rand, suit) for suit in self.suits
                        for rand in self.ranks]
 
+    def __setattr__(self, key, value):
+        print('<set key value>')
+        self.__dict__[key] = value
+
     def __len__(self):
         return len(self._cards)
 
@@ -36,3 +40,5 @@ print(c)
 print('hello')
 
 print('test magit')
+
+
