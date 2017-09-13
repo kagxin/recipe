@@ -1,0 +1,8 @@
+<h1>文章列表</h1>
+<ul>
+{% for article in object_list %}
+    <li>{{ article.name }} - {{ article.author }}</li>
+{% empty %}
+    <li>抱歉，目前还没有文章。</li>
+{% endfor %}
+</ul>
