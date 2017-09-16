@@ -45,3 +45,9 @@ sumList [] = 0
 bookID      (Book id title authors) = id
 bookTitle   (Book id title authors) = title
 bookAuthors (Book id title authors) = authors
+complicated (True, a, x:xs, 5) = (a, xs)
+-- file: ch03/BookStore.hs
+
+nicerID      (Book id _     _      ) = id
+nicerTitle   (Book _  title _      ) = title
+nicerAuthors (Book _  _     authors) = authors
