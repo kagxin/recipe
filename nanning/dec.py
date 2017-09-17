@@ -169,9 +169,33 @@ fixed = r.parameter("testing") \
         .get_or("")
 
 print(fixed)
-# request = dict(url="face.png", mimetype="PNG")
-# tp = Option \
-#         .from_value(request.get("type", None)) \
-#         .or_call(from_mimetype, request) \
-#         .or_call(from_extension, request) \
-#         .get_or("application/undefined")
+
+print(list(zipwith(_+_)(range(10), range(10))))
+
+def zip_with(func):
+    def wrapper(lst, lst2):
+        return map(func, lst, lst2)
+    return wrapper
+import traceback
+def supperss2(*exceptions):
+    def wrapper2(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except exceptions:
+                traceback.print_exc()
+                return None
+        return wrapper
+    return  wrapper2
+
+
+print(list(zip_with(_+_)(range(10), range(10))))
+
+
+@supperss2(ValueError)
+def test():
+    raise ValueError
+
+test()
+print('test')
+print('test')
