@@ -1,13 +1,19 @@
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import as_completed
-# from concurrent.futures import
 import requests
+from requests.exceptions import ConnectionError
 from functools import partial
+from os import cpu_count
+
 
 def get_url(url):
-    r = requests.get(url)
-    print(r.status_code)
-    # print(r.content)
+    try:
+        r = requests.get(url)
+        print(r.status_code)
+        # print(r.content)
+    except ConnectionError:
+        raise ConnectionError('检查网络链接！')
+
     return url, r.status_code
 
 URLS = [
@@ -21,6 +27,10 @@ if __name__ == '__main__':
     # get_url('https://github.com/timeline.json')
     executor = ThreadPoolExecutor(max_workers=2)
 
-    for future in  as_completed(map(partial(executor.submit, get_url), URLS)):
-        res =  future.result()
+    for future in as_completed(map(partial(executor.submit, get_url), URLS)):
+        res = future.result()
         print(res)
+
+"""
+
+"""
