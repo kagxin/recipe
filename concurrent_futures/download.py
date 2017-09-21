@@ -9,8 +9,6 @@ from os import cpu_count
 def get_url(url):
     try:
         r = requests.get(url)
-        print(r.status_code)
-        # print(r.content)
     except ConnectionError:
         raise ConnectionError('检查网络链接！')
 
@@ -26,10 +24,15 @@ URLS = [
 if __name__ == '__main__':
     # get_url('https://github.com/timeline.json')
     executor = ThreadPoolExecutor(max_workers=2)
+    for res in executor.map(get_url, URLS):
+        print(res)
 
+    print('------------------------------------------------')
     for future in as_completed(map(partial(executor.submit, get_url), URLS)):
         res = future.result()
         print(res)
+
+
 
 """
 
