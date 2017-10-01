@@ -2,10 +2,19 @@ import asyncio
 import logging
 from functools import wraps
 import functools
-import uuid
-from textwrap import dedent
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
+
+def ignore(errors, default=None):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except errors:
+                return default
+        return wrapper
+    return decorator
 
 
 async def handle_exception(task):
@@ -14,6 +23,18 @@ async def handle_exception(task):
     except Exception as e:
         logging.exception(str(e))
         print("exception consumed")
+
+def log_asyncio_exception(func):
+
+    async def handle_exception(*args, **kwargs):
+        try:
+            return await func(*args, **kwargs)
+        except Exception as e:
+            logging.exception(str(e))
+            print("exception consumed")
+            raise
+
+    return handle_exception
 
 async def test():
     while True:
@@ -24,6 +45,9 @@ async def test():
 async def bug():
     raise Exception('test except')
 
+@log_asyncio_exception
+async def bug2():
+    raise Exception('test 2 except')
 
 def test_dec():
     raise Exception('test except')
@@ -33,7 +57,8 @@ loop.set_debug(True)
 
 tasks = [
         asyncio.ensure_future(handle_exception(bug())),
-        asyncio.ensure_future(handle_exception(test()))
+        asyncio.ensure_future(handle_exception(test())),
+        asyncio.ensure_future(bug2())
     ]
 
 try:
@@ -42,8 +67,9 @@ except Exception:
     print("exception consumed")
 
 """
-两种方式去消费一个协程中的异常：
+三种方式去消费一个协程中的异常：
     1、使用run_until_complete: 这个有局限只能在协程是一个的时候使用，
     2、在业务协程外包裹一个协程来消费这个异常 例如 例子中的： handle_exception
+    3、写一个装饰器
 
 """
