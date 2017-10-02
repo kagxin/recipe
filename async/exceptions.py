@@ -24,16 +24,14 @@ async def handle_exception(task):
         logging.exception(str(e))
         print("exception consumed")
 
-def log_asyncio_exception(func):
 
+def log_asyncio_exception(coro):
     async def handle_exception(*args, **kwargs):
         try:
-            return await func(*args, **kwargs)
+            return await coro(*args, **kwargs)
         except Exception as e:
             logging.exception(str(e))
-            print("exception consumed")
             raise
-
     return handle_exception
 
 async def test():
