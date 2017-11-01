@@ -22,4 +22,3 @@ print(r.zrem('zset_key', 'jack'))
 print(r.zrangebyscore('zset_key', 0, 10000, withscores=True))
 print(r.zrank('zset_key', 'ming'))
 print(r.zscore('zset_key2', 'jack'))
-
