@@ -27,3 +27,6 @@ print(conn.randomkey())
 conn.rename('key_key', 'key_key2')
 print(conn.keys())
 print(type(conn.type('key_key2')))
+
+print(conn.ttl('key_key2'))
+print(conn.expire('key_key', 60))
