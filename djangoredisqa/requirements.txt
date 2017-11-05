@@ -1,3 +1,4 @@
 django-redis == 4.8.0
 django == 1.10
-redis == 3.2.9s
+redis == 3.2.9
+redis-py == 2.10.5
