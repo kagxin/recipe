@@ -36,6 +36,8 @@ def get_cache(name):
                 continue
 
 
-
-print(get_cache('hello'))
+if __name__ == '__main__':
+    set_cache('hello', 'world')
+    print(get_cache('hello'))
+    print(get_cache('not-have'))
 
