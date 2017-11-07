@@ -35,9 +35,13 @@ def get_cache(name):
             except WatchError:
                 continue
 
+def delete_cache(name):
+    return r.delete(name)
 
 if __name__ == '__main__':
     set_cache('hello', 'world')
     print(get_cache('hello'))
     print(get_cache('not-have'))
+    print(delete_cache('hello'))
+    print(get_cache('hello'))
 
