@@ -20,7 +20,8 @@ func main() {
 	} else {
 		fmt.Println("b>a.")
 	}
-
+	fmt.Println("hello")
 	fmt.Println(example(0))
+	fmt.Println("hello")
 
 }
