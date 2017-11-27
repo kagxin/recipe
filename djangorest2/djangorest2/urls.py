@@ -18,6 +18,6 @@ from django.contrib import admin
 from snippets import urls as s_urls
 
 urlpatterns = [
-    url(r'^api/', include(s_urls)),
+    url(r'^app/', include(s_urls)),
     url(r'^admin/', admin.site.urls),
 ]

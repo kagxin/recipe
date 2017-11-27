@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'snippets',
 ]
 
@@ -70,6 +71,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangorest2.wsgi.application'
 
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
