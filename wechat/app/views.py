@@ -23,7 +23,8 @@ class TestView(View):
         lst = [token, timestamp, nonce]
 #         lst.sort()
         sha1 = hashlib.sha1()
-        map(sha1.update, lst)
+#         map(sha1.update, lst)
+        sha1.update(''.join(lst))
         hashcode = sha1.hexdigest()
         logger.error("handle/GET func: hashcode:{} signature:{} ".format(hashcode, signature))
         if hashcode == signature:
