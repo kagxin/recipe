@@ -24,7 +24,9 @@ class TestView(View):
 #         lst.sort()
         sha1 = hashlib.sha1()
 #         map(sha1.update, lst)
-        sha1.update(''.join(lst))
+        print(lst)
+        print(''.join(lst))
+        sha1.update(''.join(lst).encode(encoding='utf_8', errors='strict'))
         hashcode = sha1.hexdigest()
         logger.error("handle/GET func: hashcode:{} signature:{} ".format(hashcode, signature))
         if hashcode == signature:
