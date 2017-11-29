@@ -21,12 +21,9 @@ class TestView(View):
         token = "hello2016" #请按照公众平台官网\基本配置中信息填写
 
         lst = [token, timestamp, nonce]
-#         lst.sort()
+        lst.sort()
         sha1 = hashlib.sha1()
-#         map(sha1.update, lst)
-        print(lst)
-        print(''.join(lst))
-        sha1.update(''.join(lst).encode(encoding='utf_8', errors='strict'))
+        map(sha1.update, lst)
         hashcode = sha1.hexdigest()
         logger.error("handle/GET func: hashcode:{} signature:{} ".format(hashcode, signature))
         if hashcode == signature:
