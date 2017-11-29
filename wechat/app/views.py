@@ -1,4 +1,4 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
 from django.shortcuts import render
 from django.views.generic import View
@@ -20,7 +20,7 @@ class TestView(View):
         if not all([signature, timestamp, nonce, echostr]):
             return HttpResponse('check faild.')
 
-        token = "hello2016" #请按照公众平台官网\基本配置中信息填写
+        token = "hello2016" 
 
         lst = [token, timestamp, nonce]
         lst.sort()
