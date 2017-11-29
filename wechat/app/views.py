@@ -3,6 +3,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 import hashlib
 import logging
+logger = logging.getLogger('django')
 
 # Create your views here.
 
@@ -11,9 +12,9 @@ class TestView(View):
 #         try:
         signature = request.GET.get('signature', None)
         timestamp = request.GET.get('timestamp', None)
-        nonce = request.GET.get('nonce')
-        echostr = request.GET.get('echostr')
-        print(signature)
+        nonce = request.GET.get('nonce', None)
+        echostr = request.GET.get('echostr', None)
+        logger.error('signature:{},timestamp:{},nonce:{},echostr:{}'.format(signature, timestamp, nonce, echostr))
         if not all([signature, timestamp, nonce, echostr]):
             return HttpResponse('check faild.')
 
@@ -24,7 +25,7 @@ class TestView(View):
         sha1 = hashlib.sha1()
         map(sha1.update, list)
         hashcode = sha1.hexdigest()
-        print("handle/GET func: hashcode, signature: ", hashcode, signature)
+        logger.error("handle/GET func: hashcode:{} signature:{} ".format(hashcode, signature))
         if hashcode == signature:
             return HttpResponse(echostr)
         else:
